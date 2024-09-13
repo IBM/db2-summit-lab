@@ -1,0 +1,32 @@
+site_name: Db2 Summit Labs
+# theme:
+#   name: material
+nav:
+  - Introduction: "index.md"
+  - Requesting an IBMid: "ibmid.md"
+  - Accessing a workshop: "workshop.md"
+  - VM Console: "console.md"
+  - Lab Instructions: "wxd-lab-instructions.md"
+  - Db2 Development: "db2-jupyter.md"
+  - Db2U on Kubernetes: "db2-k8s.md"
+  - Jupyter Notebook: "jupyter-notebooks.md"
+  
+# Copyright
+copyright: Copyright &copy; 2024 IBM 
+
+# Theme
+theme:
+  name: material
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  logo: wxd-images/IBM_logo®_rev_RGB.png  
+  palette:
+    scheme: default
+    primary: black
+    accent: black
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences    
