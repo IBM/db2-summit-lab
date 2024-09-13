@@ -16,9 +16,16 @@ This will place the file into the Download directory of the k8s user.
     sudo systemctl stop jupyter-notebook
     rm -rf ~/notebooks
     unzip ~/Downloads/notebooks.zip
-    sudo systtemctl start jupyter-notebook
+    sudo systemctl start jupyter-notebook
     ```
 
 !!! abstract "Open the new Table of Contents"
-    <a href="localhost:8888/Table_of_Contents.ipynb"_blank">Table of Contents</a>
+    <a href="localhost:8888/notebooks/Table_of_Contents.ipynb"_blank">Table of Contents</a>
 
+The password is `kubernetes`.
+
+Your screen should like this.
+
+![Browser](wxd-images/table_of_contents.png)
+
+Click on the Db2 Development with Db2 Magic Commands arrow to display the lab exercises for the workshop.
