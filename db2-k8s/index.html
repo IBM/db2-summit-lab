@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sql-examples" class="md-skip">
+        <a href="#db2-in-a-kuebernetes-environment" class="md-skip">
           Skip to content
         </a>
       
@@ -241,7 +241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../wxd-lab-instructions/" class="md-nav__link">
+      <a href="../lab-instructions/" class="md-nav__link">
         Lab Instructions
       </a>
     </li>
@@ -305,50 +305,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#7-access-control" class="md-nav__link">
-    7 Access Control
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-query-workspace" class="md-nav__link">
-    8 Query Workspace
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-prestodb-sql" class="md-nav__link">
-    9 PrestoDB SQL
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-analytic-workloads" class="md-nav__link">
-    10 Analytic Workloads
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-advanced-functions" class="md-nav__link">
-    11 Advanced Functions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-time-travel" class="md-nav__link">
-    12 Time Travel
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-federation" class="md-nav__link">
-    13 Federation
+  <a href="#download-the-latest-lab-contents" class="md-nav__link">
+    Download the Latest Lab Contents
   </a>
   
 </li>
@@ -403,50 +361,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#7-access-control" class="md-nav__link">
-    7 Access Control
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-query-workspace" class="md-nav__link">
-    8 Query Workspace
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-prestodb-sql" class="md-nav__link">
-    9 PrestoDB SQL
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-analytic-workloads" class="md-nav__link">
-    10 Analytic Workloads
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-advanced-functions" class="md-nav__link">
-    11 Advanced Functions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-time-travel" class="md-nav__link">
-    12 Time Travel
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-federation" class="md-nav__link">
-    13 Federation
+  <a href="#download-the-latest-lab-contents" class="md-nav__link">
+    Download the Latest Lab Contents
   </a>
   
 </li>
@@ -465,396 +381,31 @@
                 
 
 
-<h1 id="sql-examples">SQL Examples</h1>
-<p>This section contains all the SQL examples used throughout the lab. You can copy the SQL from this chapter to use in the Query Workspace, rather than having to cut and paste them from documentation or type them in.</p>
-<p>Each SQL statement will reference the chapter in the PDF documentation.</p>
-<h2 id="7-access-control">7 Access Control</h2>
+<h1 id="db2-in-a-kuebernetes-environment">Db2 in a Kuebernetes Environment</h1>
+<p>To refresh the Db2 Kubernetes lab, make sure that you are using the VM Console and have opened a terminal window.</p>
+<p><img alt="Browser" src="../wxd-images/vmware-terminal-window.png" /></p>
+<h3 id="download-the-latest-lab-contents">Download the Latest Lab Contents</h3>
+<p>This will place the file into the Download directory of the k8s user.</p>
 <div class="admonition abstract">
-<p class="admonition-title">7.1 Enter this text into the SQL window and Run the code</p>
-<div class="highlight"><pre><span></span><code>SELECT
-  *
-FROM
-  &quot;hive_data&quot;.&quot;ontime&quot;.&quot;ontime&quot;
-LIMIT
-  10;
+<p class="admonition-title">Download latest notebooks</p>
+<p><a href="https://github.com/IBM/db2-summit-lab/raw/main/notebooks.zip">Latest Lab Material</a></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Recreate the notebook directory</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>jupyter-notebook
+rm<span class="w"> </span>-rf<span class="w"> </span>~/notebooks
+unzip<span class="w"> </span>~/Downloads/notebooks.zip
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>jupyter-notebook
 </code></pre></div>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">7.2 Enter this text into the SQL window and Run the code</p>
-<div class="highlight"><pre><span></span><code>SELECT
-  flightdate, reporting_airline, flight_number_reporting_airline, originairportid, destairportid
-FROM
-  &quot;hive_data&quot;.&quot;ontime&quot;.&quot;ontime&quot;
-LIMIT
-  10;
-</code></pre></div>
+<p class="admonition-title">Open the new Table of Contents</p>
+<p><a href="localhost:8888/notebooks/Table_of_Contents.ipynb"_blank">Table of Contents</a></p>
 </div>
-<h2 id="8-query-workspace">8 Query Workspace</h2>
-<div class="admonition abstract">
-<p class="admonition-title">8.1 Retrieve 10 rows from the ontime table</p>
-<div class="highlight"><pre><span></span><code>SELECT
-  *
-FROM
-  &quot;hive_data&quot;.&quot;ontime&quot;.&quot;ontime&quot;
-LIMIT
-  10;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">8.2 Copy the following SQL and place it into the SQL window</p>
-<div class="highlight"><pre><span></span><code>SELECT * FROM &quot;hive_data&quot;.&quot;ontime&quot;.&quot;ontime&quot; LIMIT 10;
-SELECT * FROM &quot;hive_data&quot;.&quot;ontime&quot;.&quot;ontime&quot; LIMIT 20;
-</code></pre></div>
-</div>
-<h2 id="9-prestodb-sql">9 PrestoDB SQL</h2>
-<div class="admonition abstract">
-<p class="admonition-title">9.1 Display the catalogs</p>
-<div class="highlight"><pre><span></span><code>show catalogs;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">9.2 Show schemas in tpch</p>
-<div class="highlight"><pre><span></span><code>show schemas in tpch;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">9.3 Set the catalog to tpch.tiny</p>
-<div class="highlight"><pre><span></span><code>USE tpch.tiny;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">9.4 View tables in the current schema</p>
-<div class="highlight"><pre><span></span><code>show tables; 
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">9.5 Set the catalog to tpch.tiny and show the tables</p>
-<div class="highlight"><pre><span></span><code>USE tpch.tiny;
-show tables;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">9.6 Inspect schema of the customer table</p>
-<div class="highlight"><pre><span></span><code>use tpch.tiny;
-describe customer;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">9.7 Show the customer table columns using an alternate format</p>
-<div class="highlight"><pre><span></span><code>show columns from tpch.tiny.customer;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">9.8 Inspect available Date functions</p>
-<div class="highlight"><pre><span></span><code>show functions like &#39;date%&#39;;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">9.9 View the contents of the sf1 schema</p>
-<div class="highlight"><pre><span></span><code>show tables in tpch.sf1;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">9.10 Query data from customer table</p>
-<div class="highlight"><pre><span></span><code>select * from tpch.sf1.customer limit 5;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">9.11 Gather statistics on the customer table</p>
-<div class="highlight"><pre><span></span><code>show stats for tpch.sf1.customer;
-</code></pre></div>
-</div>
-<h2 id="10-analytic-workloads">10 Analytic Workloads</h2>
-<div class="admonition abstract">
-<p class="admonition-title">10.1 Create the workshop schema in the iceberg_data catalog</p>
-<div class="highlight"><pre><span></span><code>CREATE SCHEMA IF NOT EXISTS iceberg_data.workshop 
-with (location=&#39;s3a://iceberg-bucket/&#39;);
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">10.2 Create the workshop customer table</p>
-<div class="highlight"><pre><span></span><code>create table iceberg_data.workshop.customer as 
-  select * from tpch.tiny.customer;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">10.3 Run a simple scan query which selects customer names and market segment</p>
-<div class="highlight"><pre><span></span><code>use iceberg_data.workshop; 
-select 
-  name, mktsegment 
-from 
-  customer 
-limit 3;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">10.4 Run an explain against the previous statement</p>
-<div class="highlight"><pre><span></span><code>use iceberg_data.workshop;
-explain select name, mktsegment from customer;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">10.5 Explain the query and focus on IO operations</p>
-<div class="highlight"><pre><span></span><code>use iceberg_data.workshop;
-explain (type io) select name, mktsegment from customer;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">10.6 Explain physical execution plan for the query</p>
-<div class="highlight"><pre><span></span><code>use iceberg_data.workshop;
-explain (type distributed) select name, mktsegment from customer;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">10.7 Enter the following query into the SQL window and press the Explain button</p>
-<div class="highlight"><pre><span></span><code>select 
-  name, mktsegment 
-from 
-  iceberg_data.workshop.customer 
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">10.8 Create a partitioned table</p>
-<div class="highlight"><pre><span></span><code>create table iceberg_data.workshop.part_customer 
-  with (partitioning = array[&#39;mktsegment&#39;]) 
-as select * from tpch.tiny.customer;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">10.9 Run a query against the partitioned table</p>
-<div class="highlight"><pre><span></span><code>select
-  * 
-from 
-  iceberg_data.&quot;workshop&quot;.part_customer 
-where 
-  mktsegment=&#39;MACHINERY&#39;;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">10.10 Create the Orders Table</p>
-<div class="highlight"><pre><span></span><code>create table iceberg_data.workshop.orders as 
-  select * from tpch.tiny.orders;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">10.11 SQL with a Windowing function</p>
-<div class="highlight"><pre><span></span><code>SELECT 
-  orderkey, clerk, totalprice, 
-  rank() OVER (PARTITION BY clerk ORDER BY totalprice DESC) AS rnk 
-FROM 
-  iceberg_data.workshop.orders 
-ORDER BY 
-  clerk, rnk;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">10.12 Save a query as a prepared statement</p>
-<div class="highlight"><pre><span></span><code>prepare 
-  customer_by_segment
-from 
-  select * from iceberg_data.workshop.customer where mktsegment=?;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">10.13 Execute prepared statement using parameters</p>
-<div class="highlight"><pre><span></span><code>prepare 
-  customer_by_segment
-from 
-  select * from iceberg_data.workshop.customer where mktsegment=?;    
-execute customer_by_segment using &#39;FURNITURE&#39;;
-</code></pre></div>
-</div>
-<h2 id="11-advanced-functions">11 Advanced Functions</h2>
-<div class="admonition abstract">
-<p class="admonition-title">11.1 Concatenate two strings</p>
-<div class="highlight"><pre><span></span><code>select 
-   concat(cast(custkey as varchar),&#39;-&#39;,name) 
-from 
-   iceberg_data.workshop.customer
-limit 2;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">11.2 Select orders from the last 2 days</p>
-<div class="highlight"><pre><span></span><code>select
-   orderdate 
-from 
-   iceberg_data.workshop.orders 
-where 
-   orderdate &gt;  date &#39;1998-08-02&#39; - interval &#39;2&#39; day;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">11.3 Compute the number of orders by year</p>
-<div class="highlight"><pre><span></span><code>select 
-   distinct year(orderdate), count(orderkey) 
-from 
-   iceberg_data.workshop.orders 
-group by 
-   year(orderdate);
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">11.4 SQL Representation of Co-ordinates</p>
-<div class="highlight"><pre><span></span><code>select 
-   ST_Point(-121.748360,37.195840)  as SVL, 
-   ST_Point(-122.378952, 37.621311) as SFO;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">11.5 SQL Representation of a Line</p>
-<div class="highlight"><pre><span></span><code>select 
-   ST_LineFromText(&#39;LINESTRING (-121.74294303079807 37.19665657093434, -121.73659072815602 37.20102399761407)&#39;);
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">11.6 SQL Representation of a Polygon</p>
-<div class="highlight"><pre><span></span><code>select ST_Polygon(&#39;POLYGON (
-   (-121.74418635253568 37.196001834113844, 
-   -121.74499684288966 37.19668005184322,
-   -121.74584008032835 37.19707784979194,  
-   -121.74629035274705 37.197645197338105, 
-   -121.74672425162339 37.198186455965086, 
-   -121.74705172247337 37.19828427337538, 
-   -121.74760023614738 37.19827775221884,  
-   -121.74848440744239 37.19836252721197, 
-   -121.74932764488139 37.19789300297414,  
-   -121.75039192514376 37.19746260319114, 
-   -121.75130884352407 37.19721479614175, 
-   -121.75195559845278 37.1963670290329, 
-   -121.75198015876644 37.19555185937345,  
-   -121.7508585711051 37.19458016564036, 
-   -121.74940132582242 37.19447582194559,  
-   -121.74841891327239 37.1942866986312,
-   -121.7474446874937 37.193556286900346, 
-   -121.74418635253568 37.196001834113844))&#39;);
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">11.7 Distance between SFO airport and IBM SVL</p>
-<div class="highlight"><pre><span></span><code>select 
-   ST_Distance(to_spherical_geography(ST_Point(-122.378952, 37.621311)), 
-   to_spherical_geography(ST_Point(-121.748360,37.195840)))*0.000621371 as distance_in_miles;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">11.8 What queries are currently running?</p>
-<div class="highlight"><pre><span></span><code>select * from &quot;system&quot;.runtime.queries limit 5;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">11.9 What tasks make up a query and where is the task running?</p>
-<div class="highlight"><pre><span></span><code>select * from &quot;system&quot;.runtime.tasks limit 5;
-</code></pre></div>
-</div>
-<h2 id="12-time-travel">12 Time Travel</h2>
-<div class="admonition abstract">
-<p class="admonition-title">12.1 Check current snapshots – STARTING STATE</p>
-<div class="highlight"><pre><span></span><code>SELECT 
-   * 
-FROM 
-   iceberg_data.workshop.&quot;customer$snapshots&quot; 
-ORDER BY 
-   committed_at;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">12.2 Capture the first snapshot ID</p>
-<div class="highlight"><pre><span></span><code>SELECT 
-   snapshot_id 
-FROM 
-   iceberg_data.workshop.&quot;customer$snapshots&quot; 
-ORDER BY 
-   committed_at;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">12.3 Insert a new customer record into the table</p>
-<p><div class="highlight"><pre><span></span><code>insert into iceberg_data.workshop.customer 
-   values(1501,&#39;Deepak&#39;,&#39;IBM SVL&#39;,16,&#39;123-212-3455&#39;,
-          123,&#39;AUTOMOBILE&#39;,&#39;Testing snapshots&#39;);
-</code></pre></div>
-</p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">12.4 View available snapshots</p>
-<div class="highlight"><pre><span></span><code>SELECT 
-   * 
-FROM 
-   iceberg_data.workshop.&quot;customer$snapshots&quot; 
-ORDER BY 
-   committed_at;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">12.5 Select customer Deepak</p>
-<div class="highlight"><pre><span></span><code>select * from iceberg_data.workshop.customer where name=&#39;Deepak&#39;;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">12.6 View the available snapshots</p>
-<div class="highlight"><pre><span></span><code>SELECT 
-   snapshot_id 
-FROM 
-   iceberg_data.workshop.&quot;customer$snapshots&quot; 
-ORDER BY 
-   committed_at;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">12.7 Rollback to previous snapshot - Replace the ID parameter with the snapshot ID previously found. Remember the closing parenthesis!</p>
-<div class="highlight"><pre><span></span><code>CALL iceberg_data.system.rollback_to_snapshot(&#39;workshop&#39;,&#39;customer&#39;,ID)
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">12.8 Select customer Deepak</p>
-<div class="highlight"><pre><span></span><code>select * from iceberg_data.workshop.customer where name=&#39;Deepak&#39;;
-</code></pre></div>
-</div>
-<h2 id="13-federation">13 Federation</h2>
-<div class="admonition abstract">
-<p class="admonition-title">13.1 Select the names of employees in the GOSALES database with employee ids between 4000 and 5000</p>
-<div class="highlight"><pre><span></span><code>select 
-  go.&quot;EMPLOYEE_KEY&quot;, go.&quot;FIRST_NAME&quot;, go.&quot;LAST_NAME&quot; 
-from 
-  gosales.&quot;GOSALESDW&quot;.&quot;EMP_EMPLOYEE_DIM&quot; go
-where 
-  go.&quot;EMPLOYEE_KEY&quot; between 4000 and 5000
-order by 
-  go.&quot;EMPLOYEE_KEY&quot;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">13.2 Select TPCH customers who are employees in GOSALES</p>
-<div class="highlight"><pre><span></span><code>select 
-  t1.custkey, go.&quot;FIRST_NAME&quot;, go.&quot;LAST_NAME&quot; 
-from 
-  tpch.sf1.customer t1, gosales.&quot;GOSALESDW&quot;.&quot;EMP_EMPLOYEE_DIM&quot; go
-where 
-   t1.custkey between 4000 and 5000 AND
-   go.&quot;EMPLOYEE_KEY&quot; = t1.custkey
-order by 
-   t1.custkey
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">13.3 Create a table in iceberg_data using the Db2 employee table</p>
-<div class="highlight"><pre><span></span><code>create table iceberg_data.workshop.db2employee AS 
-  select 
-    go.&quot;EMPLOYEE_KEY&quot;, go.&quot;FIRST_NAME&quot;, go.&quot;LAST_NAME&quot; 
-  from 
-    gosales.&quot;GOSALESDW&quot;.&quot;EMP_EMPLOYEE_DIM&quot; go
-  where 
-    go.&quot;EMPLOYEE_KEY&quot; between 4000 and 5000
-  order by 
-    go.&quot;EMPLOYEE_KEY&quot;
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">13.4 Query the contents of the new db2employee table</p>
-<div class="highlight"><pre><span></span><code>select * from iceberg_data.workshop.db2employee
-</code></pre></div>
-</div>
+<p>The password is <code>kubernetes</code>.</p>
+<p>Your screen should like this.</p>
+<p><img alt="Browser" src="../wxd-images/table_of_contents.png" /></p>
+<p>Click on the Db2 Development with Db2 in a Kubernetes Environment arrow to display the lab exercises for the workshop.</p>
 
               
             </article>
