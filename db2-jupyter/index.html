@@ -290,15 +290,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#catalog" class="md-nav__link">
-    Catalog
+  <a href="#download-the-latest-lab-contents" class="md-nav__link">
+    Download the Latest Lab Contents
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    Summary
+  <a href="#unpack-the-notebook-files" class="md-nav__link">
+    Unpack the notebook files
   </a>
   
 </li>
@@ -368,15 +368,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#catalog" class="md-nav__link">
-    Catalog
+  <a href="#download-the-latest-lab-contents" class="md-nav__link">
+    Download the Latest Lab Contents
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    Summary
+  <a href="#unpack-the-notebook-files" class="md-nav__link">
+    Unpack the notebook files
   </a>
   
 </li>
@@ -396,16 +396,19 @@
 
 
 <h1 id="db2-development-with-jupyter-notebooks">Db2 Development with Jupyter Notebooks</h1>
-<p>This hands-on lab will explore the use of Jupyter notebooks as an environment to test, prototype, and run Db2 code. Learn how you can take advantage of this environment to make your life easier when coding SQL! In order to run this lab you must first get </p>
-<p>Watsonx.data is based on open source PrestoDB, a distributed query engine that enables querying data stored in open file formats using open table formats for optimization or performance. </p>
-<p>Connectivity to watsonx.data can be done using the following methods:</p>
-<ul>
-<li>Command line interface (CLI)</li>
-<li>JDBC drivers</li>
-<li>watsonx.data UI </li>
-</ul>
-<p>This lab will be using the watsonx.data UI to issue the SQL commands. Please make sure to review the <a href="wxd-query.md">Using the Query Workspace</a> lab before running the examples in this lab.</p>
-<p>The SQL statements that you will be executing will be displayed in this format:</p>
+<p>To refresh the Db2 Development lab, make sure that you are using the VM Console and have opened a terminal window.</p>
+<p><img alt="Browser" src="../wxd-images/vmware-terminal-window.png" /></p>
+<h2 id="download-the-latest-lab-contents">Download the Latest Lab Contents</h2>
+<p>This will place the file into the Download directory of the k8s user.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Download link</p>
+<p><a href="https://github.com/IBM/db2-summit-lab/raw/main/notebooks.zip">Latest Lab Material</a></p>
+</div>
+<h2 id="unpack-the-notebook-files">Unpack the notebook files</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Unpack the notebook files</p>
+</div>
+<p>The following commands need to be copied (the copy icon is at the end of the line) and pasted into the terminal window. </p>
 <div class="admonition abstract">
 <p class="admonition-title">Sample SQL</p>
 <div class="highlight"><pre><span></span><code>SELECT
@@ -416,100 +419,6 @@ LIMIT
   10;
 </code></pre></div>
 </div>
-<p>A copy icon is found on the far right-hand side of the command box. Use this to copy the text and paste it the SQL window. You can also select the text and copy it that way. </p>
-<p>The expected results are displayed below the SQL command (your results may vary depending on the query).</p>
-<div class="admonition abstract">
-<p class="admonition-title">Before starting, make sure you are in the Query Workspace by clicking this icon on the left side<br><img alt="icon" src="../wxd-images/watsonx-workspace-icon.png" /></p>
-</div>
-<h3 id="catalog">Catalog</h3>
-<p>We are going to inspect the available catalogs in the watsonx.data system. A watsonx.data catalog contains schemas and references a data source via a connector. A connector is like a driver for a database. Watsonx.data connectors are an implementation of Presto’s SPI which allows Presto to interact with a resource. There are several built-in connectors for JMX, Hive, TPCH etc., some of which you will use as part of the labs.</p>
-<div class="admonition abstract">
-<p class="admonition-title">Display the catalogs</p>
-<div class="highlight"><pre><span></span><code>show catalogs;
-</code></pre></div>
-</div>
-<p><img alt="Browser" src="../wxd-images/watsonx-sql-show-catalogs.png" /></p>
-<p>Let's look up what schemas are available with any given catalog. We will use the TPCH catalog which is an internal PrestoDB auto-generated catalog and look at the available schemas.</p>
-<div class="admonition abstract">
-<p class="admonition-title">Show schemas in tpch</p>
-<div class="highlight"><pre><span></span><code>show schemas in tpch;
-</code></pre></div>
-</div>
-<p><img alt="Browser" src="../wxd-images/watsonx-sql-show-tpch.png" /></p>
-<p>You can connect to a specific catalog using the <code>USE</code> command. Rather than having to type out the catalog name, you can use this command to make the catalog the default for any SQL that doesn't include it.</p>
-<p>The command format is:</p>
-<pre style="font-size: medium; color: darkgreen; overflow: auto">
-USE catalog
-USE catalog.schema
-</pre>
-
-<div class="admonition abstract">
-<p class="admonition-title">Set the catalog to tpch.tiny</p>
-<div class="highlight"><pre><span></span><code>USE tpch.tiny;
-</code></pre></div>
-</div>
-<p>Look at the available tables in the TPCH catalog under the <code>tiny</code> schema.</p>
-<div class="admonition abstract">
-<p class="admonition-title">View tables in the current schema</p>
-<div class="highlight"><pre><span></span><code>show tables; 
-</code></pre></div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Your SQL will fail!</p>
-</div>
-<p>The SQL doesn't quite work as expected! The reason is that each SQL statement executed in the SQL window has an independent context. What this means is that the catalog name is reset when you run another SQL statement after the <code>USE</code> statement is executed. If we bundle the two commands together, the SQL will work.</p>
-<div class="admonition abstract">
-<p class="admonition-title">Set the catalog to tpch.tiny and show the tables</p>
-<div class="highlight"><pre><span></span><code>USE tpch.tiny;
-show tables;
-</code></pre></div>
-</div>
-<p><img alt="Browser" src="../wxd-images/watsonx-sql-show-tiny-tables.png" />    </p>
-<p>The describe command is used to display the format of a table.</p>
-<div class="admonition abstract">
-<p class="admonition-title">Inspect schema of the customer table</p>
-<div class="highlight"><pre><span></span><code>use tpch.tiny;
-describe customer;
-</code></pre></div>
-</div>
-<p><img alt="Browser" src="../wxd-images/watsonx-sql-describe-customer.png" /> </p>
-<p>You could also use the syntax below to achieve the same result.</p>
-<div class="admonition abstract">
-<p class="admonition-title">Show the customer table columns using an alternate format</p>
-<div class="highlight"><pre><span></span><code>show columns from tpch.tiny.customer;
-</code></pre></div>
-</div>
-<p><img alt="Browser" src="../wxd-images/watsonx-sql-describe-customer2.png" />    </p>
-<p>The Presto engine includes a number of built-in functions. The following SQL will return a list of available Date functions.
- </p>
-<div class="admonition abstract">
-<p class="admonition-title">Inspect available Date functions</p>
-<div class="highlight"><pre><span></span><code>show functions like &#39;date%&#39;;
-</code></pre></div>
-</div>
-<p><img alt="Browser" src="../wxd-images/watsonx-sql-date-functions.png" />   </p>
-<p>Now we will switch to a different schema and display the tables in it. In this example we use the show command with the <code>IN</code> clause to tell the system which catalog and schema to use.</p>
-<div class="admonition abstract">
-<p class="admonition-title">View the contents of the sf1 schema</p>
-<div class="highlight"><pre><span></span><code>show tables in tpch.sf1;
-</code></pre></div>
-</div>
-<p><img alt="Browser" src="../wxd-images/watsonx-sql-sf1-tables.png" />       </p>
-<div class="admonition abstract">
-<p class="admonition-title">Query data from customer table</p>
-<div class="highlight"><pre><span></span><code>select * from tpch.sf1.customer limit 5;
-</code></pre></div>
-</div>
-<p><img alt="Browser" src="../wxd-images/watsonx-sql-sf1-customer.png" />   </p>
-<p>Presto gathers statistics for tables in order to generate more accurate access plans. This SQL will gather statistics on a given table.</p>
-<div class="admonition abstract">
-<p class="admonition-title">Gather statistics on the customer table</p>
-<div class="highlight"><pre><span></span><code>show stats for tpch.sf1.customer;
-</code></pre></div>
-</div>
-<p><img alt="Browser" src="../wxd-images/watsonx-sql-statistics.png" /> </p>
-<h2 id="summary">Summary</h2>
-<p>This lab has provided an introduction to some of the SQL that is available in Presto and watsonx.data. The next set of labs will demonstrate some more sophisticated SQL that can be run in the Presto engine.</p>
 
               
             </article>
