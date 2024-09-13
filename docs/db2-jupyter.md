@@ -13,8 +13,10 @@ This will place the file into the Download directory of the k8s user.
 
 !!! abstract "Recreate the notebook directory"
     ```bash
+    sudo systemctl stop jupyter-notebook
     rm -rf ~/notebooks
     unzip ~/Downloads/notebooks.zip
+    sudo systtemctl start jupyter-notebook
     ```
 
 !!! abstract "Open the new Table of Contents"
