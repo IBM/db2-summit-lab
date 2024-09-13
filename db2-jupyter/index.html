@@ -296,13 +296,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#unpack-the-notebook-files" class="md-nav__link">
-    Unpack the notebook files
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -374,13 +367,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#unpack-the-notebook-files" class="md-nav__link">
-    Unpack the notebook files
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -398,26 +384,21 @@
 <h1 id="db2-development-with-jupyter-notebooks">Db2 Development with Jupyter Notebooks</h1>
 <p>To refresh the Db2 Development lab, make sure that you are using the VM Console and have opened a terminal window.</p>
 <p><img alt="Browser" src="../wxd-images/vmware-terminal-window.png" /></p>
-<h2 id="download-the-latest-lab-contents">Download the Latest Lab Contents</h2>
+<h3 id="download-the-latest-lab-contents">Download the Latest Lab Contents</h3>
 <p>This will place the file into the Download directory of the k8s user.</p>
 <div class="admonition abstract">
-<p class="admonition-title">Download link</p>
+<p class="admonition-title">Download latest notebooks</p>
 <p><a href="https://github.com/IBM/db2-summit-lab/raw/main/notebooks.zip">Latest Lab Material</a></p>
 </div>
-<h2 id="unpack-the-notebook-files">Unpack the notebook files</h2>
 <div class="admonition abstract">
-<p class="admonition-title">Unpack the notebook files</p>
+<p class="admonition-title">Recreate the notebook directory</p>
+<p>```bash
+rm -rf ~/notebooks
+unzip ~/Downloads/notebooks.zip</p>
 </div>
-<p>The following commands need to be copied (the copy icon is at the end of the line) and pasted into the terminal window. </p>
 <div class="admonition abstract">
-<p class="admonition-title">Sample SQL</p>
-<div class="highlight"><pre><span></span><code>SELECT
-  *
-FROM
-  &quot;hive_data&quot;.&quot;ontime&quot;.&quot;ontime&quot;
-LIMIT
-  10;
-</code></pre></div>
+<p class="admonition-title">Open the new Table of Contents</p>
+<p><a href="localhost:8888/Table_of_Contents.ipynb"_blank">Table of Contents</a></p>
 </div>
 
               
