@@ -1,4 +1,4 @@
-# Db2 Development with Jupyter Notebooks
+# Refresh Db2 Development Lab
 
 To refresh the Db2 Development lab, make sure that you are using the VM Console and have opened a terminal window.
 

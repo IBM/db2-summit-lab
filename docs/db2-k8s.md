@@ -1,4 +1,4 @@
-# Db2 in a Kuebernetes Environment
+# Refresh Db2 in a Kubernetes Lab
 
 To refresh the Db2 Kubernetes lab, make sure that you are using the VM Console and have opened a terminal window.
 
