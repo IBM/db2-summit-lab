@@ -20,7 +20,7 @@ This will place the file into the Download directory of the k8s user.
     ```
 
 !!! abstract "Open the new Table of Contents"
-    <a href="http://localhost:8888/notebooks/Table_of_Contents.ipynb",target="_blank">Table of Contents</a>
+    <a href="http://localhost:8888/notebooks/Table_of_Contents.ipynb" target="_blank">Table of Contents</a>
 
 The password is `kubernetes`.
 
