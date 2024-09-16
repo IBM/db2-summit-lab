@@ -27,7 +27,7 @@ This will place the file into the Download directory of the k8s user.
     ```
 
 !!! abstract "Update Certificates in the Cluster"
-    This commands takes approximately 1 minute to complete.
+    This command takes approximately 1 minute to complete.
     ```bash
     microk8s refresh-certs
     ```
