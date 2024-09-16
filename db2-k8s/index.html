@@ -311,6 +311,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#update-the-kubernetes-cluster-certificates" class="md-nav__link">
+    Update the Kubernetes Cluster Certificates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote-user-updates" class="md-nav__link">
+    Remote User Updates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-the-table-of-contents" class="md-nav__link">
+    Open the Table of Contents
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -367,6 +388,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#update-the-kubernetes-cluster-certificates" class="md-nav__link">
+    Update the Kubernetes Cluster Certificates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote-user-updates" class="md-nav__link">
+    Remote User Updates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-the-table-of-contents" class="md-nav__link">
+    Open the Table of Contents
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -398,14 +440,63 @@ unzip<span class="w"> </span>~/Downloads/notebooks.zip
 sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>jupyter-notebook
 </code></pre></div>
 </div>
+<h3 id="update-the-kubernetes-cluster-certificates">Update the Kubernetes Cluster Certificates</h3>
 <div class="admonition abstract">
-<p class="admonition-title">Open the new Table of Contents</p>
-<p><a href="localhost:8888/notebooks/Table_of_Contents.ipynb"_blank">Table of Contents</a></p>
+<p class="admonition-title">Switch to the Root user</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>su<span class="w"> </span>-
+</code></pre></div>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Update Certificates in the Cluster</p>
+<p>This commands takes approximately 1 minute to complete.
+<div class="highlight"><pre><span></span><code>microk8s<span class="w"> </span>refresh-certs
+</code></pre></div></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Exit from being the Root user</p>
+<div class="highlight"><pre><span></span><code><span class="nb">exit</span>
+</code></pre></div>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Update local and remote connection settings</p>
+<div class="highlight"><pre><span></span><code>microk8s<span class="w"> </span>config<span class="w"> </span>&gt;<span class="w"> </span>config
+cp<span class="w"> </span>config<span class="w"> </span>~/.kube/.
+rsync<span class="w"> </span>-r<span class="w"> </span>config<span class="w"> </span>db2inst1@10.0.0.1:/home/db2inst1/.kube/
+rsync<span class="w"> </span>-r<span class="w"> </span>config<span class="w"> </span>db2inst2@10.0.0.1:/home/db2inst2/.kube/<span class="w"> </span>
+</code></pre></div>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Install kubectl command</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-LO<span class="w"> </span>https://dl.k8s.io/release/v1.20.13/bin/linux/amd64/kubectl
+sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>kubectl<span class="w"> </span>/usr/local/bin/kubectl
+</code></pre></div>
+</div>
+<h3 id="remote-user-updates">Remote User Updates</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Connect to remote site</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>db2inst1@10.0.0.1
+</code></pre></div>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Install kubectl command</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-LO<span class="w"> </span>https://dl.k8s.io/release/v1.20.13/bin/linux/amd64/kubectl
+sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>kubectl<span class="w"> </span>/usr/local/bin/kubectl
+</code></pre></div>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Exit remote connection</p>
+<div class="highlight"><pre><span></span><code>exit
+</code></pre></div>
+</div>
+<h3 id="open-the-table-of-contents">Open the Table of Contents</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Open the Table of Contents</p>
+<p><a href="http://localhost:8888/notebooks/Table_of_Contents.ipynb" target="_blank">Table of Contents</a></p>
 </div>
 <p>The password is <code>kubernetes</code>.</p>
 <p>Your screen should like this.</p>
 <p><img alt="Browser" src="../wxd-images/table_of_contents.png" /></p>
-<p>Click on the Db2 Development with Db2 in a Kubernetes Environment arrow to display the lab exercises for the workshop.</p>
+<p>Click on the Db2 in a Kubernetes Environment arrow to display the lab exercises for the workshop.</p>
 
               
             </article>
