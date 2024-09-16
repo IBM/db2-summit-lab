@@ -19,8 +19,60 @@ This will place the file into the Download directory of the k8s user.
     sudo systemctl start jupyter-notebook
     ```
 
-!!! abstract "Open the new Table of Contents"
-    <a href="localhost:8888/notebooks/Table_of_Contents.ipynb"_blank">Table of Contents</a>
+### Update the Kubernetes Cluster Certificates
+
+!!! abstract "Switch to the Root user"
+    ```bash
+    sudo su -
+    ```
+
+!!! abstract "Update Certificates in the Cluster"
+    This commands takes approximately 1 minute to complete.
+    ```bash
+    microk8s refresh-certs
+    ```
+
+!!! abstract "Exit from being the Root user"
+    ```bash
+    exit
+    ```
+
+!!! abstract "Update local and remote connection settings"
+    ```bash
+    microk8s config > config
+    cp config ~/.kube/.
+    rsync -r config db2inst1@10.0.0.1:/home/db2inst1/.kube/
+    rsync -r config db2inst2@10.0.0.1:/home/db2inst2/.kube/ 
+    ```
+
+!!! abstract "Install kubectl command"
+    ```bash
+    curl -LO https://dl.k8s.io/release/v1.20.13/bin/linux/amd64/kubectl
+    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+    ```
+
+### Remote User Updates
+
+!!! abstract "Connect to remote site"
+    ```bash
+    ssh db2inst1@10.0.0.1
+    ```
+
+!!! abstract "Install kubectl command"
+    ```bash
+    curl -LO https://dl.k8s.io/release/v1.20.13/bin/linux/amd64/kubectl
+    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+    ```
+
+!!! abstract "Exit remote connection"
+    ```
+    exit
+    ```
+
+### Open the Table of Contents
+    
+!!! abstract "Open the Table of Contents"
+    <a href="http://localhost:8888/notebooks/Table_of_Contents.ipynb" target="_blank">Table of Contents</a>
 
 The password is `kubernetes`.
 
@@ -28,4 +80,4 @@ Your screen should like this.
 
 ![Browser](wxd-images/table_of_contents.png)
 
-Click on the Db2 Development with Db2 in a Kubernetes Environment arrow to display the lab exercises for the workshop.
+Click on the Db2 in a Kubernetes Environment arrow to display the lab exercises for the workshop.
