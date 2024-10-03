@@ -45,30 +45,6 @@ This will place the file into the Download directory of the k8s user.
     rsync -r config db2inst2@10.0.0.1:/home/db2inst2/.kube/ 
     ```
 
-!!! abstract "Install kubectl command"
-    ```bash
-    curl -LO https://dl.k8s.io/release/v1.20.13/bin/linux/amd64/kubectl
-    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-    ```
-
-### Remote User Updates
-
-!!! abstract "Connect to remote site"
-    ```bash
-    ssh db2inst1@10.0.0.1
-    ```
-
-!!! abstract "Install kubectl command"
-    ```bash
-    curl -LO https://dl.k8s.io/release/v1.20.13/bin/linux/amd64/kubectl
-    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-    ```
-
-!!! abstract "Exit remote connection"
-    ```
-    exit
-    ```
-
 ### Open the Table of Contents
     
 !!! abstract "Open the Table of Contents"

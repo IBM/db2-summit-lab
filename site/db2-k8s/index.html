@@ -319,13 +319,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#remote-user-updates" class="md-nav__link">
-    Remote User Updates
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#open-the-table-of-contents" class="md-nav__link">
     Open the Table of Contents
   </a>
@@ -396,13 +389,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#remote-user-updates" class="md-nav__link">
-    Remote User Updates
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#open-the-table-of-contents" class="md-nav__link">
     Open the Table of Contents
   </a>
@@ -463,29 +449,6 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w
 cp<span class="w"> </span>config<span class="w"> </span>~/.kube/.
 rsync<span class="w"> </span>-r<span class="w"> </span>config<span class="w"> </span>db2inst1@10.0.0.1:/home/db2inst1/.kube/
 rsync<span class="w"> </span>-r<span class="w"> </span>config<span class="w"> </span>db2inst2@10.0.0.1:/home/db2inst2/.kube/<span class="w"> </span>
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">Install kubectl command</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-LO<span class="w"> </span>https://dl.k8s.io/release/v1.20.13/bin/linux/amd64/kubectl
-sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>kubectl<span class="w"> </span>/usr/local/bin/kubectl
-</code></pre></div>
-</div>
-<h3 id="remote-user-updates">Remote User Updates</h3>
-<div class="admonition abstract">
-<p class="admonition-title">Connect to remote site</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>db2inst1@10.0.0.1
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">Install kubectl command</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-LO<span class="w"> </span>https://dl.k8s.io/release/v1.20.13/bin/linux/amd64/kubectl
-sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>kubectl<span class="w"> </span>/usr/local/bin/kubectl
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">Exit remote connection</p>
-<div class="highlight"><pre><span></span><code>exit
 </code></pre></div>
 </div>
 <h3 id="open-the-table-of-contents">Open the Table of Contents</h3>
